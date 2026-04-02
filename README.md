@@ -7,9 +7,9 @@ Job Portal is a beginner-friendly full-stack web app built with React (frontend)
 
 ⚡ Work in progress — more cool features coming soon! 🚀
 
-Features (Coming Soon) 🌟
-📝 User registration and login
-👤 Profile creation and editing
-🔍 Job search and filters
-📄 Apply for jobs
-🏢 Employer dashboard for posting jobs
+## Features (Coming Soon) 🌟
+- 📝 User registration and login
+- 👤 Profile creation and editing
+- 🔍 Job search and filters
+- 📄 Apply for jobs
+- 🏢 Employer dashboard for posting jobs
