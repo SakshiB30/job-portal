@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 
 
 const SelectInput=(props:any)=>  {
-    useEffect(()=>{
-        setData(props.options);
-        setValue(props.form.getInputProps(props.name).value);
-        setSearch(props.form.getInputProps(props.name).value);
+   useEffect(() => {
+  setData(props.options);
 
-    },[])
+  const initialValue = props.form.values[props.name] || '';
+  setValue(initialValue);
+  setSearch(initialValue);
+}, [props]);
 
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
@@ -49,7 +50,7 @@ const SelectInput=(props:any)=>  {
       }} >
       <Combobox.Target>
         <InputBase
-          {...props.form.getInputProps(props.name)}
+          // {...props.form.getInputProps(props.name)}
           withAsterisk
           leftSection={<props.leftSection stroke={1.5} />}
           label={props.label}
@@ -59,6 +60,10 @@ const SelectInput=(props:any)=>  {
             combobox.openDropdown();
             combobox.updateSelectedOptionIndex();
             setSearch(event.currentTarget.value);
+            props.form.setFieldValue(props.name, event.currentTarget.value);   // ✅ sync with form
+
+    combobox.openDropdown();
+    combobox.updateSelectedOptionIndex();
           }}
           onClick={() => combobox.openDropdown()}
           onFocus={() => combobox.openDropdown()}
