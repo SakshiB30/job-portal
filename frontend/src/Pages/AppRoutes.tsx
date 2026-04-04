@@ -29,10 +29,10 @@ const AppRoutes = () => {
       {location.pathname!="/sign-up" &&(<Divider size="xs" />)}
       <Routes> 
         <Route path='/find-jobs' element={<FindJobs/>}/>
-        <Route path='/jobs' element={<JobDescriptionPage/>}/>
-        <Route path='/apply-job' element={<ApplyJobPage/>}/>        
+        <Route path='/jobs/:id' element={<JobDescriptionPage/>}/>
+        <Route path='/apply-job/:id' element={<ApplyJobPage/>}/>        
         <Route path='/find-talent' element={<FindTalentPage/>}/>
-        <Route path='/company' element={<CompanyPage/>}/>        
+        <Route path='/company/:name' element={<CompanyPage/>}/>        
         <Route path='/posted-job' element={<PostedJobPage/>}/>        
         <Route path='/talent-profile' element={<TalentProfilePage/>}/>
         <Route path='/post-job' element={<PostJobPage/>}/>

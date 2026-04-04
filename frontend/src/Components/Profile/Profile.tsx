@@ -1,9 +1,7 @@
 import { Avatar, Divider, FileInput, Overlay } from "@mantine/core";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfile } from "../../Services/ProfileService";
 import Info from "./Info";
-import { changeProfile, setProfile } from "../../Slices/ProfileSlice";
+import { changeProfile } from "../../Slices/ProfileSlice";
 import About from "./About";
 import Skills from "./Skills";
 import Experiences from "./Experiences";
@@ -15,21 +13,7 @@ import { successNotification } from "../../Services/NotificationService";
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state: any) => state.user);
   const profile = useSelector((state: any) => state.profile);
-
-
-  useEffect(() => {
-    console.log(profile);
-    getProfile(user.id)
-      .then((data: any) => {
-        dispatch(setProfile(data));
-      })
-      .catch((error: any) => {
-        console.log(error);
-      });
-  }, []);
-
   const { hovered, ref } = useHover();
   const handleFileChange = async (image:any) => {
     // Handle file change logic here, e.g., upload the new profile picture

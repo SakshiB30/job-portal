@@ -5,10 +5,10 @@ import StarterKit from '@tiptap/starter-kit';
 import TextAlign from '@tiptap/extension-text-align';
 import Superscript from '@tiptap/extension-superscript';
 import SubScript from '@tiptap/extension-subscript';
-import { content } from '../../Data/PostJobData';
+// import { content } from '../../Data/PostJobData';
 
   
-const TextEditor= ()=> {
+const TextEditor= (props:any)=> {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({ link: false }),
@@ -18,7 +18,11 @@ const TextEditor= ()=> {
       Highlight,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
     ],
-    content,
+    content: props.form.getValues().description,
+    onUpdate: ({ editor }) => {
+      const html = editor.getHTML();
+      props.form.setFieldValue("description", html);
+    }
   });
 
   return (
